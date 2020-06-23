@@ -1,0 +1,224 @@
+
+
+*,*::before, *::after{
+  box-sizing: border-box;
+}
+
+:root{
+  --box-size: 130px;
+  --mark-size: calc(var(--box-size)*0.8);
+}
+
+html{
+  background: url('https://images.pexels.com/photos/164357/pexels-photo-164357.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+}
+
+header{
+    width: 60%;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+body{
+  margin: 0;
+}
+
+h1{
+  text-align: center;
+  font-family:system-ui;
+ 
+  color:white;
+  opacity: 0.2;
+  font-size: 60px;
+  font-weight: 100;
+}
+
+.board
+{
+	width: 400px;
+	height: 400px;
+	margin: 0 auto;
+  background-color: white;
+ opacity: 0.2; 
+ 
+  border-radius: 5px;
+	display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items:center;
+  align-items: center;
+	grid-template-columns: repeat(3, auto);
+  
+}
+
+.box
+{
+  width: var(--box-size);
+  height: var(--box-size);
+  border: 1.5px solid black;
+  opacity: 0.25;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+  cursor: pointer;
+}
+
+.box:first-child,
+.box:nth-child(2),
+.box:nth-child(3) {
+  border-top: none;
+}
+
+.box:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.box:nth-child(3n + 3) {
+  border-right: none;
+}
+
+.box:last-child,
+.box:nth-child(8),
+.box:nth-child(7) {
+  border-bottom: none;
+}
+
+
+.box.x, .box.o{
+  cursor: not-allowed;
+}
+
+.box.x::before,
+.box.x::after,
+.box.o::before{
+  background-color:white;
+}
+
+.board.x .box:not(.x):not(.o):hover::before,
+.board.x .box:not(.x):not(.o):hover::after,
+.board.o .box:not(.x):not(.o):hover::before{
+  background-color:black;
+}
+
+.box.x::before,
+.box.x::after,
+.board.x .box:not(.x):not(.o):hover::before,
+.board.x .box:not(.x):not(.o):hover::after{
+  content:'';
+  width: calc(var(--mark-size)*0.15);
+  height: var(--mark-size);
+  position: absolute;
+}
+
+.box.x::before,
+.board.x .box:not(.x):not(.o):hover::before{
+  transform:rotate(45deg);
+}
+
+.box.x::after,
+.board.x .box:not(.x):not(.o):hover::after{
+  transform:rotate(-45deg);
+}
+
+
+.box.o::before,
+.box.o::after,
+.board.o .box:not(.x):not(.o):hover::before,
+.board.o .box:not(.x):not(.o):hover::after{
+  content:'';
+  border-radius: 50%;
+  position: absolute;
+}
+
+.box.o::before,
+.board.o .box:not(.x):not(.o):hover::before{
+  width: var(--mark-size);
+  height: var(--mark-size);
+  
+}
+
+.box.o::after,
+.board.o .box:not(.x):not(.o):hover::after{
+  width: calc(var(--mark-size)*0.7);
+  height: calc(var(--mark-size)*0.7);
+  background-color: #EDE1D0; 
+}
+
+.winning-message{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background-color:gray;
+  opacity: 0.8;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  font-size: 4rem;
+  flex-direction:column;
+}
+
+.winning-message button{
+  font-size:3rem;
+  background-color:white;
+  border: 1px solid black;
+  padding: .5rem .5rem;
+  border-radius:7px;
+  cursor:pointer;
+}
+
+.winning-message button:hover{
+  background-color:gray;
+  color:white;
+  border-color:tan;
+}
+
+.winning-message.show{
+  display:flex;
+}
+
+
+.button-link {
+  width: 70px;
+  height: 70px;
+  display: inline-block;
+  background-color: white;
+  opacity: 0.7;
+  border-radius: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 30vh;
+  
+}
+
+
+.heart {
+  fill: black;
+  background: none;
+  position: relative;
+  top: 20px;
+  width: 33px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+footer{
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 20px;
+     color:white;
+  opacity: 0.4;
+  font-size: 30px;
+  font-weight: 100;
+}
+
+footer:hover{
+    color: tan;
+    cursor: pointer;
+}
